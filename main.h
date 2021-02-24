@@ -6,6 +6,7 @@ struct node {
   char *last;
   struct node *left;
   struct node *right;
+  int data;
 };
 
 typedef struct node* Node;
@@ -24,5 +25,5 @@ Node delete(Node root,
 	char*plate);
 void LNR(Node root);
 void NLR(Node root);
-void LRN(NOde root);
+void LRN(Node root);
 void treeFree(Node root);
