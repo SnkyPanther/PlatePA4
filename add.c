@@ -16,27 +16,27 @@
 */
 #include "main.h"
 Node add(Node root, char *pl, char *fst, char *lst) {
-  if(root==NULL) {
-    struct node *new;
-    new=malloc(sizeof(struct node));
+  if(root==NULL) {					//checks if the root is NULL
+    struct node *new;			 		//if it is then it make a new node and then allocates space for it
+    new=malloc(sizeof(struct node));			//and for the plate, first, and last
     new->plate=malloc(strlen(pl)+1);
-    strcpy(new->plate, pl);
+    strcpy(new->plate, pl);				//copies using the strcpy function
     new->first=malloc(strlen(fst)+1);
     strcpy(new->first, fst);
     new->last=malloc(strlen(lst)+1);
     strcpy(new->last, lst);
 
-    new->left=NULL;
+    new->left=NULL;					//sets the children to NULL
     new->right=NULL;
-    root=new;
+    root=new;						//returns the new root
     return(root);    
   }
-  if(strcmp(pl, root->plate) < 0)  {
-    root->left=add(root->left, pl, fst, lst);
-    return(root);
+  if(strcmp(pl, root->plate) < 0)  {			//compares using strcmp and if less thatn root->plate goes to the root->left branch and
+    root->left=add(root->left, pl, fst, lst);		//calls the add function again recursivly
+    return(root);					//return root
   }
   else {
-    root->right=add(root->right, pl, fst, lst);
+    root->right=add(root->right, pl, fst, lst); 	//else it then goes to the root->right child and calls the function again, returns root
     return(root);
   }
   return root;
