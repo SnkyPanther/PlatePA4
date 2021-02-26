@@ -14,10 +14,10 @@
 
 
 void NLR(Node root){
-  if (root==NULL) return;
-  printf("Plate:<%s> Name: %s,%s\n", root->plate, root->last, root->first);
-  NLR(root->left);
-  NLR(root->right);
+  if (root==NULL) return;   					//checks if the root is NULL and if it is returns to the main function
+  printf("Plate:<%s> Name: %s,%s\n", root->plate, root->last, root->first);	//prints out the plate last first 
+  NLR(root->left);			//recursive call of the left tree
+  NLR(root->right);			//recursive function call of the right tree
 
 
 }
