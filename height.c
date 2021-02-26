@@ -14,13 +14,13 @@
 #include "main.h"
 
 int height(Node root) {
-  int hleft, hright;
-  if(root==NULL) {
+  int hleft, hright;			//assigning some variables
+  if(root==NULL) {			//if the root is NULL then exits with a -1 value
     return -1;
   }
-  hleft=height(root->left);
-  hright=height(root->right);
-  if(hleft > hright) {
+  hleft=height(root->left);		//finds the longest branch possible in the bianry search tree
+  hright=height(root->right);		
+  if(hleft > hright) {			//adds 1 and returns the greater height value
     return(hleft+1);
   }
   return(hright+1);
