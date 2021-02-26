@@ -14,10 +14,10 @@
 
 
 void nodeFree(Node root)  {
-  free(root->plate);
-  free(root->last);
-  free(root->first);
-  free(root);
+  free(root->plate);		//free the roots plate first
+  free(root->last);		// then frees the root's last
+  free(root->first);		//then frees the root's first name
+  free(root);			//and last free the root itself
   
   
   
