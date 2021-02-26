@@ -17,36 +17,37 @@
 #include "main.h"
 
 
-int main( int argc, char *argv[] ) {
-  struct node *root, *less, *more;
+int main( int argc, char *argv[] ) {			//command line arguements
+  struct node *root, *less;				//defining struct node variables
   int number, result;
-  char file[50], response[40], command[40];
-  if(argc == 2){
-    root=NULL;
-    sscanf(argv[1], "%s", file);
-    char first[50], last[50], plate[50], plateD[50], buffer[120];
-    FILE *fp;
+  char file[50], response[40], command[40];		//char strings
+  if(argc == 2){					//program runs when there is 2 command line arguements
+    root=NULL;						//sets root to NULL
+    sscanf(argv[1], "%s", file);			//sscanfs the file
+    char first[50], last[50], plate[50], plateD[50], buffer[120];	//more definitions of char strings
+    FILE *fp;						//use the file name to fopen
     fp=fopen(file, "r");
-    if(fp == NULL) {
+    if(fp == NULL) {					//check if I can open
       printf("Cannot open %s\n", file);
       return 1;
     }
-    while(NULL != fgets(buffer, 120, fp)) {
-      sscanf(buffer, "%s %s %s", plate, first, last);
-      root=add(root, plate, first, last);
+    while(NULL != fgets(buffer, 120, fp)) {		//read in all the contents of the file
+      sscanf(buffer, "%s %s %s", plate, first, last);	//sscanf the contents and place under three strings
+      root=add(root, plate, first, last);		//call the add function
     }
-    while(1){
-      printf("Enter command or plate: ");
-      if(fgets(command, 40, stdin) == NULL) {
-        printf("Freeing memory...\n");
-        treeFree(root);
+    fclose(fp);						//close the file
+    while(1){						//infinite loop
+      printf("Enter command or plate: ");		//asks for the command and use the fgets
+      if(fgets(command, 40, stdin) == NULL) {		//if CTRL-D is pressed, then the fgets return is NULL 
+        printf("Freeing memory...\n");			//and then I free the memory of the tree
+        treeFree(root);					//and return 0
         return 0;
       }  
-      sscanf(command, "%s %s", response, plateD);
-      if(strcmp(response, "*DUMP") == 0) {
-        printf("TREE HEIGHT: %d\n", height(root));
-        if(balanced(root) == 1) {
-          printf("BALANCED: YES\n");
+      sscanf(command, "%s %s", response, plateD);	//sscanf the command entered
+      if(strcmp(response, "*DUMP") == 0) {		//if the command was "*DUMP" 
+        printf("TREE HEIGHT: %d\n", height(root));	//then I print out the stats
+        if(balanced(root) == 1) {			// which are the height, if it is balanced
+          printf("BALANCED: YES\n");			//and the three different traversals of the bianary search tree
         }
         else {
         printf("BALANCED: NO\n");
@@ -59,9 +60,9 @@ int main( int argc, char *argv[] ) {
         LRN(root);
         printf("\n");
       }
-      else if(strcmp(response, "*DELETE") == 0) {
-        if(search(root, plateD, first, last) != 0) {
-          root=delete(root, plateD);
+      else if(strcmp(response, "*DELETE") == 0) {	//if the response was "*DELETE"
+        if(search(root, plateD, first, last) != 0) {    //if searches if the plate entered is found in the tree
+          root=delete(root, plateD);			// if it is it calls the delete functions and deletes the node
           printf("SUCCESS\n");
         } 
         else {
@@ -70,9 +71,9 @@ int main( int argc, char *argv[] ) {
       }
       
       else {
-        strcpy(plate, response);
-        if (search(root, plate, first, last) != 0) {
-          printf("First name: %s\nLast name: %s\n", first, last);
+        strcpy(plate, response);			//this is the last option and it searches for the plate entered
+		if (search(root, plate, first, last) != 0) {	// if the plate is recognized as a plae, then is prints out the first and last
+          printf("First name: %s\nLast name: %s\n", first, last);	//names
         }
         else {
           printf("Plate not found\n");
@@ -81,6 +82,6 @@ int main( int argc, char *argv[] ) {
     }
   }
   else {
-    return 1;
+    return 1;				//if something did not work, then returns 1
   }
 }
