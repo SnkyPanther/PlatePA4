@@ -13,10 +13,10 @@
 #include "main.h"
 
 void LRN(Node root)  {
-  if (root==NULL)  return;
-  LRN(root->left);
-  LRN(root->right);
-  printf("Plate:<%s> Name %s,%s\n", root->plate, root->last, root->first);
+  if (root==NULL)  return;		//checks if the root is NULL and if it is returns to the main fucntion
+  LRN(root->left);			//recursive function call of the left branch
+  LRN(root->right);			//recursive function call of the right branch
+  printf("Plate:<%s> Name %s,%s\n", root->plate, root->last, root->first); 	//prints out the plate, last and first
 
 
 }
