@@ -18,19 +18,19 @@
 #include "main.h"
 
 int search(Node root, char *plate, char *first, char *last)  {
-  if(root==NULL) {
+  if(root==NULL) {					//checks if the root is NULL and if it is returns 0
     return 0;
   }
-  if(strcmp(root->plate, plate) == 0) {
-    strcpy(first, root->first);
+  if(strcmp(root->plate, plate) == 0) {			//if the comparisson of the strings is 0
+    strcpy(first, root->first);				//then it copies the strings from one to another
     strcpy(last, root->last);
-    return 1;
+    return 1;						//and returns 1
   }
-  if(strcmp(plate, root->plate) < 0) {
+  if(strcmp(plate, root->plate) < 0) {			//if the comparrison is less than 0 then it goes to the root->left tree
     return(search(root->left, plate, first, last)); 
   }
   else {
-   return(search(root->right, plate, first, last)); 
+   return(search(root->right, plate, first, last)); 	//if not that, then it goes to root->right
   }
 
 
