@@ -1,3 +1,4 @@
+#include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
 struct node {
@@ -6,7 +7,6 @@ struct node {
   char *last;
   struct node *left;
   struct node *right;
-  int data;
 };
 
 typedef struct node* Node;
@@ -27,3 +27,4 @@ void LNR(Node root);
 void NLR(Node root);
 void LRN(Node root);
 void treeFree(Node root);
+void nodeFree(Node root);
