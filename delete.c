@@ -1,3 +1,16 @@
+/* Function name: delete
+*  Purpose: it looks through out the bianary search tree and tries to find the plate that was entered to be deleted
+*
+*  Inputs:
+*  Node root - pointer to the root of the BST
+*  char *plate - character arraythat contains the license plate number
+*
+*  Return:
+*  root or newRoot- return the root if it is still going through the function again and returns newRoot the new root of the tree
+*
+*  Side Effects: it goes through recusively and is trying to find the node, later, when the root is set up in the tree, the old root has to 
+*               be freed.
+*/
 #include "main.h"
 
 

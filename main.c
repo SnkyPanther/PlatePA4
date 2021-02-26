@@ -1,3 +1,19 @@
+/*  Functionname : main.c
+*   
+*   Purpose: this is the main function of the assignment, in this file, the program runs and check in the input into the command line, using fgets
+*   and sscanf. It also asks the user for differen types of commads whichs are "*DUMP" in order to look at the stats, "*DELETE" to delete a plate
+*   number, plate number- to see the name that it is associated with, and CTRL-D to exit the program and free all the memory
+*
+*   Inputs
+*   argc - this checks how much arguments there are in the command line
+*   char *argv[] - this stores the argument in a string
+*
+*   Return:
+*   1 - if the file cannot be opened
+*   0 - exits the program
+*
+*   Side Effects: Have to have all the functions and command options to work properly and have to release all the memory in the end
+*/
 #include "main.h"
 
 

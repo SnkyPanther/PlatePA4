@@ -1,3 +1,15 @@
+/* Function name: balanced
+*  Purpose: checks if the current BST is balanced or not and returns YES or NO
+*
+*  Inputs:
+*  Node root - pointer to the root of the BST
+*
+*  Return:
+*  1 if balanced and 0 if not balanced
+*
+*  Side Effects: goes recursively through out the tree
+*               
+*/
 #include "main.h"
 
 
